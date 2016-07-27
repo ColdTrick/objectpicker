@@ -26,10 +26,6 @@ if (!empty($owner_guid)) {
 	$show_group = false;
 }
 
-$icon = elgg_view_entity_icon($entity, 'tiny', [
-	'use_hover' => false,
-]);
-
 $name = $entity->title;
 if ($show_group) {
 	if ($entity->getSubtype() === 'static') {
