@@ -31,6 +31,11 @@ $handler = elgg_extract('handler', $vars, 'livesearch');
 $handler = htmlspecialchars($handler, ENT_QUOTES, 'UTF-8');
 
 $limit = (int) elgg_extract('limit', $vars, 0);
+$sortable = (bool) elgg_extract('sortable', $vars, false);
+if ($sortable && ($limit === 1)) {
+	// only one can not be sorted
+	$sortable = false;
+}
 
 ?>
 <div class="elgg-object-picker ui-front" data-limit="<?php echo $limit ?>" data-name="<?php echo $name ?>" data-handler="<?php echo $handler ?>" data-subtype="<?php echo elgg_extract("subtype", $vars); ?>" data-container_guid="<?php echo (int) elgg_extract("container_guid", $vars); ?>">
@@ -55,5 +60,9 @@ $limit = (int) elgg_extract('limit', $vars, 0);
 <script>
 require(['elgg/ObjectPicker', 'jquery.ui.autocomplete.html'], function (ObjectPicker) {
 	ObjectPicker.setup('.elgg-object-picker[data-name="<?php echo $name ?>"]');
+
+	<?php if ($sortable) { ?>
+	$('.elgg-object-picker[data-name="<?php echo $name ?>"] .elgg-object-picker-list').sortable();
+	<?php } ?>
 });
 </script>
