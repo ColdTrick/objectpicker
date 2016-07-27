@@ -6,6 +6,7 @@
  * @return void
  */
 function objectpicker_init() {
+	elgg_extend_view('css/elgg', 'css/objectpicker.css');
 	elgg_register_plugin_hook_handler('route', 'livesearch', '\ColdTrick\ObjectPicker\Router::livesearch');
 }
 

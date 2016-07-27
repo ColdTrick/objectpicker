@@ -48,13 +48,8 @@ $save_value = elgg_view('input/hidden', [
 	'value' => $entity->getGUID(),
 ]);
 
-$image_alt = '';
-if ($show_delete) {
-	$image_alt = elgg_view_icon('delete-alt', 'elgg-object-picker-remove link');
-}
-
 $body = elgg_view_image_block('', $name . $save_value, [
-	'image_alt' => $image_alt,
+	'image_alt' => elgg_view_icon('delete-alt', 'elgg-object-picker-remove link hidden'),
 ]);
 
 $list_vars = [
