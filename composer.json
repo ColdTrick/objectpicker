@@ -1,0 +1,19 @@
+{
+	"name": "coldtrick/objectpicker",
+	"description": "Helper plugin to provide an input/objectpicker view",
+	"type": "elgg-plugin",
+	"keywords": ["elgg", "plugin"],
+	"license": "GPL-2.0",
+	"support": {
+		"source": "https://github.com/ColdTrick/objectpicker",
+		"issues": "https://github.com/ColdTrick/objectpicker/issues"
+	},
+	"require": {
+		"ext-json": "*",
+		"composer/installers": "^1.0.8"
+	},
+	"require-dev": {
+		"coldtrick/sniffs": "dev-master",
+		"coldtrick/releases": "dev-master"
+	}
+}
