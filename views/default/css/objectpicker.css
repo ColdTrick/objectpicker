@@ -1,3 +1,7 @@
 .elgg-object-picker-list li:hover .elgg-object-picker-remove {
 	display: block;
 }
+
+.elgg-object-picker-list .ui-sortable-handle {
+	cursor: move;
+}
