@@ -1,2 +1,8 @@
 Version history
 ===============
+
+1.0 (2016-08-29):
+
+- added: object list can be sortable (if vars['sortable'] = true)
+- fixed: added a move cursor on sortable items
+- fixed: only show remove icon on hover of object list items
