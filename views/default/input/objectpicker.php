@@ -5,12 +5,13 @@
  * @package Elgg
  * @subpackage Core
  *
- * @uses $vars['values'] Array of gruop guids for already selected objects or null
- * @uses $vars['limit'] Limit number of objects (default 0 = no limit)
- * @uses $vars['name'] Name of the returned data array (default "objects")
- * @uses $vars['handler'] Name of page handler used to power search (default "livesearch")
- * @uses $vars['subtype'] The subtype of the object (optional)
+ * @uses $vars['values']         Array of gruop guids for already selected objects or null
+ * @uses $vars['limit']          Limit number of objects (default 0 = no limit)
+ * @uses $vars['name']           Name of the returned data array (default "objects")
+ * @uses $vars['handler']        Name of page handler used to power search (default "livesearch")
+ * @uses $vars['subtype']        The subtype of the object (optional)
  * @uses $vars['container_guid'] The container_guid of the object (optional)
+ * @uses $vars['input_*']        Vars to passthrough to the input field of the autocomplete
  *
  * Defaults to lazy load object lists in alphabetical order. User needs
  * to type two characters before seeing the object popup list.
@@ -37,9 +38,21 @@ if ($sortable && ($limit === 1)) {
 	$sortable = false;
 }
 
+// get vars for input
+$input_vars = [];
+foreach ($vars as $var_name => $value) {
+	if (stripos($var_name, 'input_') !== 0) {
+		continue;
+	}
+	unset($vars[$var_name]);
+	$var_name = substr($var_name, 6);
+	$input_vars[$var_name] = $value;
+}
+$input_vars['class'] = elgg_extract_class($input_vars, ['elgg-input-object-picker']);
+
 ?>
 <div class="elgg-object-picker ui-front" data-limit="<?php echo $limit ?>" data-name="<?php echo $name ?>" data-handler="<?php echo $handler ?>" data-subtype="<?php echo elgg_extract("subtype", $vars); ?>" data-container_guid="<?php echo (int) elgg_extract("container_guid", $vars); ?>">
-	<input type="text" class="elgg-input-object-picker" size="30"/>
+	<?php echo elgg_view('input/text', $input_vars); ?>
 	<ul class="elgg-object-picker-list">
 		<?php
 		foreach ($guids as $guid) {
