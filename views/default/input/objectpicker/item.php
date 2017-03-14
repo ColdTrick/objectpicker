@@ -7,6 +7,7 @@
  *
  * @uses $vars['entity'] Object entity
  * @uses $vars['input_name'] Name of the returned data array
+ * @uses $vars['text'] (optional) The text to show as the option (defaults to $entity->getDisplayName())
  * @uses $vars['show_delete'] boolean to toggle the availability of the delete action (default false)
  */
 
@@ -26,7 +27,7 @@ if (!empty($owner_guid)) {
 	$show_group = false;
 }
 
-$name = $entity->title;
+$name = elgg_extract('text', $vars, $entity->getDisplayName());
 if ($show_group) {
 	if ($entity->getSubtype() === 'static') {
 		$container = $entity->getOwnerEntity();
