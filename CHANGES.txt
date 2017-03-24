@@ -1,6 +1,11 @@
 Version history
 ===============
 
+1.1 (2017-03-24):
+
+- added: allow text to be influenced by view vars
+- added: option to pass vars to the input for autocomplete
+
 1.0 (2016-08-29):
 
 - added: object list can be sortable (if vars['sortable'] = true)
