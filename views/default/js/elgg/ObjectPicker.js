@@ -52,6 +52,17 @@ define(['jquery', 'elgg'], function ($, elgg) {
 			minLength: self.minLength,
 			html: "html",
 			select: function(event, ui) {
+				
+				if (typeof ui.item !== 'object' || ui.item === null) {
+					// need to have something selected, (this shouldn't happen)
+					return;
+				}
+				
+				if (ui.item.type !== 'object') {
+					// since this is the objectpicker supported results are objects
+					return;
+				}
+				
 				self.addObject(event, ui.item.guid, ui.item.html);
 			},
 			// turn off experimental live help - no i18n support and a little buggy
