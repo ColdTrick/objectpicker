@@ -124,13 +124,9 @@ define(['jquery', 'elgg'], function ($, elgg) {
 		enforceLimit : function() {
 			if (this.limit) {
 				if ($('li[data-guid]', this.$ul).length >= this.limit) {
-					if (!this.isSealed) {
-						this.seal();
-					}
+					this.seal();
 				} else {
-					if (this.isSealed) {
-						this.unseal();
-					}
+					this.unseal();
 				}
 			}
 		},
