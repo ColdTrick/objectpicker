@@ -82,6 +82,12 @@ class Router {
 		$entities = elgg_get_entities($options);
 		if (!empty($entities)) {
 			foreach ($entities as $entity) {
+				$label = elgg_view('input/objectpicker/item_label', [
+					'entity' => $entity,
+					'owner_guid' => $owner_guid,
+					'container_guid' => $container_guid,
+				]);
+				
 				$output = elgg_view('input/objectpicker/item', [
 					'entity' => $entity,
 					'input_name' => $input_name,
@@ -94,7 +100,7 @@ class Router {
 					'name' => $entity->title,
 					'desc' => $entity->description,
 					'guid' => $entity->getGUID(),
-					'label' => $output,
+					'label' => $label,
 					'value' => $entity->getGUID(),
 					'url' => $entity->getURL(),
 					'html' => $output,
