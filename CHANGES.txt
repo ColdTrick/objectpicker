@@ -1,6 +1,12 @@
 Version history
 ===============
 
+1.2 (2017-11-10):
+
+- added: view for label (autocomplete dropdown)
+- changed: only act on object return types
+- fixed: always apply (un)seal functions
+
 1.1 (2017-03-24):
 
 - added: allow text to be influenced by view vars
